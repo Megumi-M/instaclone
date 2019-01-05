@@ -1,0 +1,7 @@
+<p class = "favorite">お気に入り一覧</p>
+
+<% @favorites_pictures.each do |favorite| %>
+<p>投稿者：<%= favorite.user.name %></p>
+<p><%= favorite.content %></p>
+<p><%= image_tag(favorite.image.url) %></p>
+<% end %>

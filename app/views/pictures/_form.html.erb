@@ -1,0 +1,31 @@
+<%= form_with(model: picture, local: true, url:choose_new_or_edit) do |f| %>
+<% if picture.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% picture.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div>
+<div class = "content">
+  <p><%= f.label :文章を投稿 %></p>
+  <%= f.text_area:content %>
+</div>
+
+<div class="field">
+  <%= f.label :画像を投稿 %>
+  <%= image_tag(@picture.image.url) if @picture.image.url %>
+  <%= f.file_field :image %>
+   <%= f.hidden_field :image_cache %>
+</div>
+</div>
+<br>
+<br>
+<%= f.submit "投稿する" %>
+
+<%= link_to '一覧に戻る', pictures_path %>
+
+<% end %>

@@ -1,0 +1,18 @@
+<h3>投稿しますか？？</h3>
+
+<%= form_with(model:@picture, url:pictures_path, local:true) do |f| %>
+  <%= f.hidden_field :content %>
+  <%= image_tag(@picture.image.url) if @picture.image.url %>
+  <%= f.hidden_field :image_cache %>
+
+  <p>:<%= @picture.content %></p>
+  <%= f.submit  "投稿する" %>
+<% end %>
+
+<br>
+
+<%= form_with(model:@picture, url:new_picture_path, local:true, method: 'get') do |f| %>
+  <%= f.hidden_field :content %>
+
+  <%= f.submit  "戻る",name:'back' %>
+<% end %>

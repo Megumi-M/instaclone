@@ -1,0 +1,27 @@
+<div class = "row">
+  <div class ="col-xs-12 col-md-2">
+  </div>
+  
+  <div class ="col-xs-12 col-md-8">
+<p class = indextop>とうこう一覧
+  <%= link_to '新規投稿', new_picture_path,class: 'btn btn-primary' %>
+</p>
+
+<% @pictures.each do |picture| %>
+<div class="box11">
+<p>投稿者：<%= picture.user.name %></p>
+<p><%= picture.content %></p>
+<p><%= image_tag picture.image.url(:thumb) %></p>
+
+  <%= link_to '詳細を確認する', picture_path(picture.id),class: 'btn btn-default' %>
+  <% if picture.user_id == current_user.id %>
+    <%= link_to "編集する", edit_picture_path(picture.id),class: 'btn btn-default' %>
+    <%= link_to '削除する', picture_path(picture.id), class: 'btn btn-danger',method: :delete, data: { confirm: '本当に削除していいですか？' }  %>
+  <% end %>
+</div>
+<% end %>
+</div>
+
+<div class ="col-xs-12 col-md-2">
+</div>
+
