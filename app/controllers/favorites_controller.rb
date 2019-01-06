@@ -1,4 +1,5 @@
 class FavoritesController < ApplicationController
+  before_action :check_user, only: [:index]
   def index
     @favorites_pictures = current_user.favorite_pictures
   end
@@ -13,3 +14,11 @@ class FavoritesController < ApplicationController
     redirect_to pictures_url, notice: "#{favorite.picture.user.name}さんの投稿をお気に入り解除しました"
   end
 end
+
+private
+
+  def check_user
+    unless logged_in?
+      redirect_to new_session_path
+    end
+  end
