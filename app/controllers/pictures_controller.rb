@@ -19,7 +19,7 @@ class PicturesController < ApplicationController
     @picture.user_id = current_user.id 
       if @picture.save
         redirect_to picture_path(@picture.id), notice:"投稿しました！"
-        PictureMailer.picture_mail(@picture).deliver
+        #PictureMailer.picture_mail(@picture).deliver
       else
         render "new"
       end
