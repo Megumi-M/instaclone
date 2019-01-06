@@ -11,7 +11,7 @@
 <div class="box11">
 <p>投稿者：<%= picture.user.name %></p>
 <p><%= picture.content %></p>
-<p><%= image_tag picture.image.thumb.url  %></p>
+<p><%= image_tag picture.image.url  %></p>
 
   <%= link_to '詳細を確認する', picture_path(picture.id),class: 'btn btn-default' %>
   <% if picture.user_id == current_user.id %>
